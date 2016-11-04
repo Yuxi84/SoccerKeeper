@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">SoccerKeeper</string>
+    <string name="start">START</string>
+    <string name="about">about</string>
+    <string name="soccer_keeper">Soccer Keeper</string>
+    <string name="game_title">Game Title</string>
+    <string name="time">Time</string>
+    <string name="location">Location</string>
+    <string name="half_length">Half Length</string>
 </resources>
