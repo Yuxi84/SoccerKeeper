@@ -21,8 +21,8 @@ public class StageOneActivity extends AppCompatActivity {
         startbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(this,StageTwoActivity.class);
-                startActivity(intent);
+                //Intent intent = new Intent(this,StageTwoActivity.class);
+                //startActivity(intent);
             }
         });
     }
