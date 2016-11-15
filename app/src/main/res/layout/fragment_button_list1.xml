@@ -8,18 +8,45 @@
 >
 
 
-        <Button
-            style="@style/Button"
-            android:text="Team 1 Corner"/>
-        <Button
-            style="@style/Button"
-            android:text="Team 2 Corner"/>
-        <Button
-            style="@style/Button"
-            android:text="Team 1 Foul"/>
-        <Button
-            style="@style/Button"
-            android:text="Team 2 Foul"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+                <Button
+                    android:layout_height="match_parent"
+                    android:layout_width="fill_parent"
+                    android:layout_weight="1"
+                    android:textSize="11dp"
+                    android:text="Team 1 Corner"/>
+                <Button
+                    android:layout_height="match_parent"
+                    android:layout_width="fill_parent"
+                    android:layout_weight="1"
+                    android:text="Team 1 Foul"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+                <Button
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:layout_weight="1"
+                    android:textSize="11dp"
+                    android:text="Team 2 Corner"/>
+                <Button
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:layout_weight="1"
+                    android:text="Team 2 Foul"/>
+        </LinearLayout>
+
+        <Switch
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
         <Button
             style="@style/Button"
             android:text="Stats"/>
