@@ -1,0 +1,33 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+
+    tools:context="com.example.yzhan14.soccerkeeper.ButtonList1"
+>
+
+
+        <Button
+            style="@style/Button"
+            android:text="Team 1 Corner"/>
+        <Button
+            style="@style/Button"
+            android:text="Team 2 Corner"/>
+        <Button
+            style="@style/Button"
+            android:text="Team 1 Foul"/>
+        <Button
+            style="@style/Button"
+            android:text="Team 2 Foul"/>
+        <Button
+            style="@style/Button"
+            android:text="Stats"/>
+        <Button
+            style="@style/Button"
+            android:text="Pause"/>
+        <Button
+            style="@style/Button"
+            android:text="Start"/>
+
+</LinearLayout>
