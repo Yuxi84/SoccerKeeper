@@ -15,10 +15,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".StageOneActivity"
-            android:screenOrientation="landscape"
-            />
-        <activity android:name=".StageTwoActivity"></activity>
+        <activity android:name=".StageOneActivity" />
+        <activity android:name=".StageTwoActivity"
+            android:screenOrientation="landscape">
+
+        </activity>
     </application>
 
 </manifest>
