@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 
 /**
@@ -64,15 +65,34 @@ public class ButtonList1 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_button_list1, container, false);
+        View rootView =  inflater.inflate(R.layout.fragment_button_list1, container, false);
+
+        //start timer button
+        Button startTimerButton = (Button) rootView.findViewById(R.id.start_timer);
+        startTimerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mListener.onStartGame(true);
+            }
+        });
+
+        //stop timer button (end of game)
+        Button stopTimerButton = (Button) rootView.findViewById(R.id.stop_timer);
+        stopTimerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mListener.onStartGame(false);
+            }
+        });
+        return rootView;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
+/*    public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
         }
-    }
+    }*/
 
     @Override
     public void onAttach(Context context) {
@@ -103,6 +123,6 @@ public class ButtonList1 extends Fragment {
      */
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+        void onStartGame(boolean toStart);
     }
 }

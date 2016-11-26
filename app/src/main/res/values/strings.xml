@@ -25,4 +25,13 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="team_1_corner">Team 1 Corner</string>
+    <string name="team_1_foul">Team 1 Foul</string>
+    <string name="team_2_corner">Team 2 Corner</string>
+    <string name="team_2_foul">Team 2 Foul</string>
+    <string name="stats">Stats</string>
+    <string name="pause">Pause</string>
+    <string name="attacking_team">Attacking Team</string>
+    <string name="team_1">Team 1</string>
+    <string name="team_2">Team 2</string>
 </resources>

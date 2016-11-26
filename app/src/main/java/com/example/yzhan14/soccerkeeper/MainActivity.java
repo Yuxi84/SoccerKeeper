@@ -8,14 +8,16 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button startbutton = null;
+/*    Button startbutton = null;*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
 
-    @Override
+
+
+/*    @Override
     protected void onResume() {
         super.onResume();
         startbutton = (Button)findViewById(R.id.start_button);
@@ -26,5 +28,5 @@ public class MainActivity extends AppCompatActivity {
                 //startActivity(intent);
             }
         });
-    }
+    }*/
 }

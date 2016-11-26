@@ -7,12 +7,13 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Chronometer;
 
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link FieldFragment.OnFragmentInteractionListener} interface
+
  * to handle interaction events.
  * Use the {@link FieldFragment#newInstance} factory method to
  * create an instance of this fragment.
@@ -29,6 +30,7 @@ public class FieldFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
+    private Chronometer myChronometer = null;
     public FieldFragment() {
         // Required empty public constructor
     }
@@ -64,15 +66,17 @@ public class FieldFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.field_fragment, container, false);
+        View rootView =  inflater.inflate(R.layout.field_fragment, container, false);
+        myChronometer = (Chronometer) rootView.findViewById(R.id.my_chronometer);
+        return rootView;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
+/*    public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
         }
-    }
+    }*/
 
     @Override
     public void onAttach(Context context) {
@@ -88,7 +92,7 @@ public class FieldFragment extends Fragment {
     @Override
     public void onDetach() {
         super.onDetach();
-        mListener = null;
+       mListener = null;
     }
 
     /**
@@ -103,6 +107,13 @@ public class FieldFragment extends Fragment {
      */
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+        void onPositionTapped();
+    }
+
+    public void startChronometer(){
+        myChronometer.start();
+    }
+    public void stopChronometer(){
+        myChronometer.stop();
     }
 }
