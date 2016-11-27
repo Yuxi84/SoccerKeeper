@@ -50,7 +50,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:showText="true"
-            android:switchMinWidth="14.5sp"
+            android:switchMinWidth="12.0sp"
             android:switchPadding="20.0sp"
             android:text="@string/attacking_team"
             android:textOff="@string/team_1"

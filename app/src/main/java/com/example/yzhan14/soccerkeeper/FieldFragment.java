@@ -3,11 +3,18 @@ package com.example.yzhan14.soccerkeeper;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.GestureDetectorCompat;
+import android.util.Log;
+import android.view.GestureDetector;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Chronometer;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 
 /**
@@ -18,7 +25,7 @@ import android.widget.Chronometer;
  * Use the {@link FieldFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class FieldFragment extends Fragment {
+public class FieldFragment extends Fragment{
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -29,8 +36,11 @@ public class FieldFragment extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
-
     private Chronometer myChronometer = null;
+
+    private static final String DEBUG_TAG = "Gestures";
+
+
     public FieldFragment() {
         // Required empty public constructor
     }
@@ -67,9 +77,21 @@ public class FieldFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView =  inflater.inflate(R.layout.field_fragment, container, false);
+        //find chronometer
         myChronometer = (Chronometer) rootView.findViewById(R.id.my_chronometer);
+        //create gesture detector
+        ImageView fieldView = (ImageView) rootView.findViewById(R.id.image_field);
+        fieldView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                mListener.onPositionTapped();//ask stageII acitivity to switch fragment
+                Log.d(DEBUG_TAG, "OnTouch" + motionEvent.toString());
+                return true;
+            }
+        });
         return rootView;
     }
+
 
     // TODO: Rename method, update argument and hook method into UI event
 /*    public void onButtonPressed(Uri uri) {
@@ -95,6 +117,7 @@ public class FieldFragment extends Fragment {
        mListener = null;
     }
 
+
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated
@@ -111,6 +134,7 @@ public class FieldFragment extends Fragment {
     }
 
     public void startChronometer(){
+        myChronometer.setBase(SystemClock.elapsedRealtime());
         myChronometer.start();
     }
     public void stopChronometer(){

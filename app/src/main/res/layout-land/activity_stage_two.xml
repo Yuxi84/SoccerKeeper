@@ -20,13 +20,11 @@
         tools:layout="@layout/field_fragment"
     />
 
-    <fragment
+    <FrameLayout
         android:id= "@+id/fragment_buttons"
-        class = "com.example.yzhan14.soccerkeeper.ButtonList1"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="4"
-        tools:layout="@layout/fragment_button_list1"/>
+        android:layout_weight="4" />
 
 
 </LinearLayout>
