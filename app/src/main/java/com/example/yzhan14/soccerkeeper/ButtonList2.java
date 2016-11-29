@@ -26,4 +26,6 @@ public class ButtonList2 extends Fragment {
         return inflater.inflate(R.layout.fragment_button_list2, container, false);
     }
 
+
+
 }
