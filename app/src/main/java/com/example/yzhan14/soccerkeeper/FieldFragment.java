@@ -6,12 +6,14 @@ import android.os.Bundle;
 import android.os.SystemClock;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GestureDetectorCompat;
+import android.support.v4.view.MotionEventCompat;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
 import android.widget.Chronometer;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -83,14 +85,21 @@ public class FieldFragment extends Fragment{
         ImageView fieldView = (ImageView) rootView.findViewById(R.id.image_field);
         fieldView.setOnTouchListener(new View.OnTouchListener() {
             @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                mListener.onPositionTapped();//ask stageII acitivity to switch fragment
-                Log.d(DEBUG_TAG, "OnTouch" + motionEvent.toString());
+            public boolean onTouch(View view, MotionEvent e) {
+                int action = MotionEventCompat.getActionMasked(e);
+                if (action == e.ACTION_DOWN) {
+                    mListener.onPositionTapped();//ask stageII acitivity to switch fragment
+                    //TODO: which is the better effect
+                    view.startAnimation(AnimationUtils.loadAnimation(getContext(), R.anim.image_tap));
+                    Log.d(DEBUG_TAG, "OnTouch" + e.toString());
+                }
                 return true;
             }
         });
         return rootView;
     }
+
+
 
 
     // TODO: Rename method, update argument and hook method into UI event

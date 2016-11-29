@@ -28,6 +28,15 @@ public class StageTwoActivity extends AppCompatActivity implements  FieldFragmen
         }
     }
     @Override
+    //TODO: stack over flow code
+    public void onBackPressed() {
+        if (getFragmentManager().getBackStackEntryCount() > 0 ){
+            getFragmentManager().popBackStack();
+        } else {
+            super.onBackPressed();
+        }
+    }
+    @Override
     public void onStartGame(boolean toStart) {
         //to start the chronometer
         FieldFragment fieldFrag = (FieldFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_field);
