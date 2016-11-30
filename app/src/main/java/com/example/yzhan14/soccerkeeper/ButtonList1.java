@@ -68,11 +68,13 @@ public class ButtonList1 extends Fragment {
         View rootView =  inflater.inflate(R.layout.fragment_button_list1, container, false);
 
         //start timer button
-        Button startTimerButton = (Button) rootView.findViewById(R.id.start_timer);
+        final Button startTimerButton = (Button) rootView.findViewById(R.id.start_timer);
         startTimerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mListener.onStartGame(true);
+                //disable the start button
+                startTimerButton.setEnabled(false);
             }
         });
 
