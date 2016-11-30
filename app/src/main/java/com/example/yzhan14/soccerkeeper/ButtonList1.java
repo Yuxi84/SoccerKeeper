@@ -1,7 +1,6 @@
 package com.example.yzhan14.soccerkeeper;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -19,6 +18,9 @@ import android.widget.Button;
  * create an instance of this fragment.
  */
 public class ButtonList1 extends Fragment {
+
+    private boolean isStarted = false;
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -69,14 +71,20 @@ public class ButtonList1 extends Fragment {
 
         //start timer button
         final Button startTimerButton = (Button) rootView.findViewById(R.id.start_timer);
-        startTimerButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mListener.onStartGame(true);
-                //disable the start button
-                startTimerButton.setEnabled(false);
-            }
-        });
+        if (!isStarted){
+            startTimerButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    mListener.onStartGame(true);
+                    startTimerButton.setEnabled(false);
+                    //disable the start button
+                    isStarted = true;
+                }
+            });
+        }else{
+            startTimerButton.setEnabled(false);
+        }
+
 
         //stop timer button (end of game)
         Button stopTimerButton = (Button) rootView.findViewById(R.id.stop_timer);

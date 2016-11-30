@@ -103,7 +103,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:textAlignment="center"
-                android:text="Shot On Target"/>
+                android:text="@string/shot_on_target"/>
         </RadioGroup>
 
 
@@ -114,7 +114,7 @@
         android:layout_height="match_parent"
         android:layout_weight="1.1"
         android:id="@+id/nextbutton"
-        android:text="Next"/>
+        android:text="@string/next"/>
 
 
 </LinearLayout>

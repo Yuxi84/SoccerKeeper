@@ -35,4 +35,6 @@
     <string name="team_1">Team 1</string>
     <string name="team_2">Team 2</string>
     <string name="ok">OK</string>
+    <string name="next">Next</string>
+    <string name="shot_on_target">Shot On Target</string>
 </resources>
