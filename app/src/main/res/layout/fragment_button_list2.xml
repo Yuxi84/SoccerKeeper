@@ -22,61 +22,49 @@
                 android:layout_height="match_parent"
                 android:id="@+id/playerradiogroup">
                 <RadioButton
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:text="Player 1"
-                    android:textAlignment="center"
-                    />
+                    style = "@style/PlayerButton"
+                    android:text="@string/player_1"
+                    android:id="@+id/player1"/>
                 <RadioButton
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:text="Player 2"
-                    android:textAlignment="center"/>
+                    style = "@style/PlayerButton"
+                    android:text="@string/player_2"
+                    android:id="@+id/player2"/>
                 <RadioButton
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:text="Player 3"
-                    android:textAlignment="center"/>
+                    style = "@style/PlayerButton"
+                    android:text="@string/player_3"
+                    android:id="@+id/player3"/>
                 <RadioButton
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:text="Player 4"
-                    android:textAlignment="center"/>
+                    style = "@style/PlayerButton"
+                    android:text="@string/player_4"
+                    android:id="@+id/player4"/>
                 <RadioButton
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:text="Player 5"
-                    android:textAlignment="center"/>
+                    style = "@style/PlayerButton"
+                    android:text="@string/player_5"
+                    android:id="@+id/player5"/>
                 <RadioButton
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:text="Player 6"
-                    android:textAlignment="center"/>
+                    style = "@style/PlayerButton"
+                    android:text="@string/player_6"
+                    android:id="@+id/player6"/>
                 <RadioButton
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:text="Player 7"
-                    android:textAlignment="center"/>
+                    style = "@style/PlayerButton"
+                    android:text="@string/player_7"
+                    android:id="@+id/player7"/>
                 <RadioButton
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:text="Player 8"
-                    android:textAlignment="center"/>
+                    style = "@style/PlayerButton"
+                    android:text="@string/player_8"
+                    android:id="@+id/player8"/>
                 <RadioButton
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:text="Player 9"
-                    android:textAlignment="center"/>
+                    style = "@style/PlayerButton"
+                    android:text="@string/player_9"
+                    android:id="@+id/player9"/>
                 <RadioButton
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:text="Player 10"
-                    android:textAlignment="center"/>
+                    style = "@style/PlayerButton"
+                    android:text="@string/player_10"
+                    android:id="@+id/player10"/>
                 <RadioButton
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:text="Player 11"
-                    android:textAlignment="center"/>
+                    style = "@style/PlayerButton"
+                    android:text="@string/player_11"
+                    android:id="@+id/player11"/>
             </RadioGroup>
 
 
@@ -93,17 +81,19 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <RadioButton
+                android:id="@+id/shot"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:textAlignment="center"
-                android:text="Shot"/>
+                android:text="@string/shot"/>
             <RadioButton
+                android:id="@+id/shotontarget"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:textAlignment="center"
-                android:text="Shot On Target"/>
+                android:text="@string/shot_on_target"/>
         </RadioGroup>
 
 

@@ -35,4 +35,18 @@
     <string name="team_1">Team 1</string>
     <string name="team_2">Team 2</string>
     <string name="ok">OK</string>
+    <string name="player_1">Player 1</string>
+    <string name="player_2">Player 2</string>
+    <string name="player_3">Player 3</string>
+    <string name="player_4">Player 4</string>
+    <string name="player_5">Player 5</string>
+    <string name="player_6">Player 6</string>
+    <string name="player_7">Player 7</string>
+    <string name="player_8">Player 8</string>
+    <string name="player_9">Player 9</string>
+    <string name="player_10">Player 10</string>
+    <string name="player_11">Player 11</string>
+    <string name="shot">Shot</string>
+    <string name="shot_on_target">Shot On Target</string>
+    <string name="referee">Referee</string>
 </resources>
