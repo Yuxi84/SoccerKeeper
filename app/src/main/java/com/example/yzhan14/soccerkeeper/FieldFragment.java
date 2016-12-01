@@ -91,6 +91,7 @@ public class FieldFragment extends Fragment{
                     mListener.onPositionTapped();//ask stageII acitivity to switch fragment
                     //TODO: which is the better effect
                     view.startAnimation(AnimationUtils.loadAnimation(getContext(), R.anim.image_tap));
+                    view.setEnabled(false);
                     Log.d(DEBUG_TAG, "OnTouch" + e.toString());
                 }
                 return true;
