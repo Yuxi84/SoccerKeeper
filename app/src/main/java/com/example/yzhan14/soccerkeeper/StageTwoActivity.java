@@ -1,10 +1,17 @@
 package com.example.yzhan14.soccerkeeper;
 
+import android.content.Context;
 import android.net.Uri;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
 
 public class StageTwoActivity extends AppCompatActivity implements  FieldFragment.OnFragmentInteractionListener, ButtonList1.OnFragmentInteractionListener{
 
@@ -64,4 +71,6 @@ public class StageTwoActivity extends AppCompatActivity implements  FieldFragmen
         transaction.addToBackStack(null);
         transaction.commit();
     }
+
+
 }
