@@ -37,4 +37,5 @@
     <string name="ok">OK</string>
     <string name="next">Next</string>
     <string name="shot_on_target">Shot On Target</string>
+    <string name="list2_error_checking">Please select a player and an action</string>
 </resources>

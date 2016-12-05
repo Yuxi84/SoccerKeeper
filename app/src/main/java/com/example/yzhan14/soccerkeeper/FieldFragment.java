@@ -1,11 +1,11 @@
 package com.example.yzhan14.soccerkeeper;
 
 import android.content.Context;
+import android.graphics.Point;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.GestureDetectorCompat;
 import android.support.v4.view.MotionEventCompat;
 import android.util.Log;
 import android.view.GestureDetector;
@@ -88,7 +88,16 @@ public class FieldFragment extends Fragment{
             public boolean onTouch(View view, MotionEvent e) {
                 int action = MotionEventCompat.getActionMasked(e);
                 if (action == e.ACTION_DOWN) {
-                    mListener.onPositionTapped();//ask stageII acitivity to switch fragment
+                    //get the absolute coordinates of tapped postion
+                    int x = (int) e.getRawX();
+                    int y = (int) e.getRawY();
+                    Point coord = new Point (x,y);
+                    String position = coord.toString();
+
+                    //get the time
+                    String time = myChronometer.getText().toString();
+
+                    mListener.onPositionTapped(time, position);//ask stageII acitivity to switch fragment
                     //TODO: which is the better effect
                     view.startAnimation(AnimationUtils.loadAnimation(getContext(), R.anim.image_tap));
                     view.setEnabled(false);
@@ -140,7 +149,7 @@ public class FieldFragment extends Fragment{
      */
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onPositionTapped();
+        void onPositionTapped(String time, String position);
     }
 
     public void startChronometer(){

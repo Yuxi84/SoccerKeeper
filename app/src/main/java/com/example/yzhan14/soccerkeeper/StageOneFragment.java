@@ -2,6 +2,8 @@ package com.example.yzhan14.soccerkeeper;
 
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -17,6 +19,7 @@ import android.widget.Button;
  */
 public class StageOneFragment extends Fragment {
 
+    GameDbHelper dbHelper = null;
 
     public StageOneFragment() {
         // Required empty public constructor
@@ -46,10 +49,27 @@ public class StageOneFragment extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), StageTwoActivity.class);
                 getActivity().startActivity(intent);
+                new deleteDB().execute();
             }
         });
 
         return rootView;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        dbHelper = new GameDbHelper(getContext());
+
+    }
+
+    private class deleteDB extends AsyncTask<Void, Void, Void>{
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            SQLiteDatabase db = dbHelper.getWritableDatabase();
+            db.delete(EventsContract.EventEntry.TABLE_NAME, null,null);
+            return null;
+        }
+    }
 }
