@@ -2,6 +2,7 @@ package com.example.yzhan14.soccerkeeper;
 
 import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
+import android.content.Context;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.v4.app.FragmentTransaction;
@@ -11,11 +12,21 @@ import android.util.Log;
 import android.view.animation.GridLayoutAnimationController;
 import android.widget.ImageView;
 import android.widget.Switch;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+
 
 public class StageTwoActivity extends AppCompatActivity
         implements  FieldFragment.OnFragmentInteractionListener,
         ButtonList1.OnFragmentInteractionListener,
         ButtonList2.OnFragmentInteractionListener{
+
+
+
+
 
     FieldFragment fieldFrag = null;
 
@@ -98,6 +109,7 @@ public class StageTwoActivity extends AppCompatActivity
         transaction.commit();
     }
 
+
     @Override
     public void backPress() {
         onBackPressed();
@@ -147,4 +159,5 @@ public class StageTwoActivity extends AppCompatActivity
             StageTwoActivity.this.db = db;
         }
     }
+
 }
