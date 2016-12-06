@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Switch;
 
 
 /**
@@ -20,6 +21,7 @@ import android.widget.Button;
 public class ButtonList1 extends Fragment {
 
     private boolean isStarted = false;
+    private Switch switchBt = null;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -71,6 +73,8 @@ public class ButtonList1 extends Fragment {
 
         //start timer button
         final Button startTimerButton = (Button) rootView.findViewById(R.id.start_timer);
+        switchBt = (Switch) rootView.findViewById(R.id.switch_button);
+
         if (!isStarted){
             startTimerButton.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -121,6 +125,9 @@ public class ButtonList1 extends Fragment {
         mListener = null;
     }
 
+    public String getAttackingTeam(){
+        return switchBt.isChecked()? "Team 2":"Team 1";
+    }
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated

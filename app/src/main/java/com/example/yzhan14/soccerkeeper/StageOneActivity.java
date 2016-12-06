@@ -5,18 +5,15 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
 public class StageOneActivity extends AppCompatActivity {
-    Button start = null;
+/*    Button start = null;
     EditText title = null;
     EditText hometeam = null;
     EditText awayteam = null;
@@ -24,7 +21,7 @@ public class StageOneActivity extends AppCompatActivity {
     EditText halflength = null;
     EditText time = null;
     EditText location = null;
-    Spinner side = null;
+    EditText referee = null;*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +32,7 @@ public class StageOneActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        start = (Button)findViewById(R.id.start_game_button);
+/*        start = (Button)findViewById(R.id.start_game_button);
         title = (EditText)findViewById(R.id.game_title_input);
         hometeam = (EditText) findViewById(R.id.hometeam_input);
         awayteam = (EditText) findViewById(R.id.awayteam_input);
@@ -43,16 +40,8 @@ public class StageOneActivity extends AppCompatActivity {
         halflength = (EditText) findViewById(R.id.half_input);
         time = (EditText) findViewById(R.id.time_input);
         location = (EditText) findViewById(R.id.location_input);
-        side = (Spinner) findViewById(R.id.side_input);
-        // Create an ArrayAdapter using the string array and a default spinner layout
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.sides_array, android.R.layout.simple_spinner_item);
-        // Specify the layout to use when the list of choices appears
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        // Apply the adapter to the spinner
-        side.setAdapter(adapter);
-
-        start.setOnClickListener(new View.OnClickListener() {
+        referee = (EditText) findViewById(R.id.referee_input);*/
+/*        start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -103,29 +92,20 @@ public class StageOneActivity extends AppCompatActivity {
                     toast.show();
                     location.requestFocus();
                 }
-                if(side.getSelectedItem() == null){
-                    text = "Please choose a starting side for the home team";
+                if (referee.getText().toString().isEmpty()) {
+                    text = "Please enter the head referee";
                     toast = Toast.makeText(context,text,duration);
                     toast.show();
-                    side.requestFocus();
+                    referee.requestFocus();
                 }
                 else{
 
-                    Intent intent = new Intent(getBaseContext(),StageTwoActivity.class);
-                    intent.putExtra("HOME_TEAM", hometeam.getText().toString());
-                    intent.putExtra("AWAY_TEAM", awayteam.getText().toString());
-                    intent.putExtra("SIDE",(String)side.getSelectedItem());
-                    intent.putExtra("HALF_LENGTH",halflength.getText().toString());
-                    intent.putExtra("TIME",time.getText().toString());
-                    intent.putExtra("WEATHER", weather.getText().toString());
-                    intent.putExtra("LOCATION",location.getText().toString());
+                    Intent intent = new Intent(getActivi,StageTwoActivity.class);
                     startActivity(intent);
                 }
             }
 
-        });
+        });*/
 
     }
-
-
 }

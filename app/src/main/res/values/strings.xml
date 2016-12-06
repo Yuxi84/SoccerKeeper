@@ -55,6 +55,7 @@
     <string name="player_11">Player 11</string>
     <string name="shot">Shot</string>
     <string name="shot_on_target">Shot On Target</string>
+    <string name="list2_error_checking">Please select a player and an action</string>
     <string name="referee">Referee</string>
     <string name="next">next</string>
     <string name="home_team_start_side">Home Team Start Side</string>
