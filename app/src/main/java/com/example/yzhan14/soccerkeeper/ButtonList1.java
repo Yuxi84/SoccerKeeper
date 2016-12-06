@@ -73,7 +73,7 @@ public class ButtonList1 extends Fragment {
 
         //start timer button
         final Button startTimerButton = (Button) rootView.findViewById(R.id.start_timer);
-        switchBt = (Switch) rootView.findViewById(R.id.switch_button);
+        //switchBt = (Switch) rootView.findViewById(R.id.switch_button);
 
         if (!isStarted){
             startTimerButton.setOnClickListener(new View.OnClickListener() {

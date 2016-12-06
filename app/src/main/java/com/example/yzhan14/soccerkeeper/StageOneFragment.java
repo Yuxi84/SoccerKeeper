@@ -14,6 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 
@@ -31,7 +32,7 @@ public class StageOneFragment extends Fragment {
     EditText halflength = null;
     EditText time = null;
     EditText location = null;
-    EditText referee = null;
+    Spinner sideselect = null;
     public StageOneFragment() {
         // Required empty public constructor
     }
@@ -48,7 +49,7 @@ public class StageOneFragment extends Fragment {
         halflength = (EditText) rootView.findViewById(R.id.half_input);
         time = (EditText) rootView.findViewById(R.id.time_input);
         location = (EditText) rootView.findViewById(R.id.location_input);
-        referee = (EditText) rootView.findViewById(R.id.referee_input);
+        sideselect = (Spinner) rootView.findViewById(R.id.side_input);
 
         //specify the adapter (Home Team/Away Team)
         AutoCompleteTextView homeTeamView = (AutoCompleteTextView) rootView.findViewById(R.id.hometeam_input);
@@ -112,13 +113,17 @@ public class StageOneFragment extends Fragment {
                     toast.show();
                     location.requestFocus();
                 }
-                if (referee.getText().toString().isEmpty()) {
+                if (sideselect.getSelectedItem()==null) {
                     text = "Please enter the head referee";
                     toast = Toast.makeText(context,text,duration);
                     toast.show();
                     referee.requestFocus();
                 }else{*/
                     Intent intent = new Intent(getActivity(), StageTwoActivity.class);
+                    //intent.putExtra("HOME",hometeam.getText().toString());
+                    //intent.putExtra("AWAY",hometeam.getText().toString());
+                    //intent.putExtra("SIDE",sideselect.getSelectedItem().toString());
+
                     getActivity().startActivity(intent);
                     new deleteDB().execute();
             /*    }*/

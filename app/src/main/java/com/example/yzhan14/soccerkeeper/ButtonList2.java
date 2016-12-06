@@ -59,13 +59,7 @@ public class ButtonList2 extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        /*        if(conditions are met to line up team){
-            ArrayList<String> players = readRawTextFile(getContext(),textid);
-            for(Button abutton: buttonslist ){
-                abutton.setText(players.remove(players.size()-1));
-            }
 
-        }*/
     }
 
     @Override
@@ -140,6 +134,12 @@ public class ButtonList2 extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+    public void setNames(){
+        ArrayList<String> players = readRawTextFile(getContext(),textid);
+        for(Button abutton: buttonslist ){
+            abutton.setText(players.remove(players.size()-1));
+        }
     }
 
     public interface OnFragmentInteractionListener {
