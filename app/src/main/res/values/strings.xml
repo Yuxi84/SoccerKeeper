@@ -23,6 +23,13 @@
         <item>Clarkson women</item>
     </string-array>
 
+
+    <string-array name="sides_array">
+        <item>Left</item>
+        <item>Right</item>
+    </string-array>
+
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="team_1_corner">Team 1 Corner</string>
@@ -50,4 +57,5 @@
     <string name="shot_on_target">Shot On Target</string>
     <string name="referee">Referee</string>
     <string name="next">next</string>
+    <string name="home_team_start_side">Home Team Start Side</string>
 </resources>
