@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.animation.GridLayoutAnimationController;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Switch;
 import java.io.BufferedReader;
@@ -27,7 +28,20 @@ public class StageTwoActivity extends AppCompatActivity
 
 
 
-
+    ArrayList<Button> buttonslist = new ArrayList<Button>();
+    Button player1 = null;
+    Button player2 = null;
+    Button player3 = null;
+    Button player4 = null;
+    Button player5 = null;
+    Button player6 = null;
+    Button player7 = null;
+    Button player8 = null;
+    Button player9 = null;
+    Button player10 = null;
+    Button player11 = null;
+    String homename = null;
+    String awayname = null;
 
     FieldFragment fieldFrag = null;
 
@@ -43,8 +57,8 @@ public class StageTwoActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stage_two);
-        String homename = getIntent().getStringExtra("HOME");
-        String awayname = getIntent().getStringExtra("AWAY");
+        homename = getIntent().getStringExtra("HOME");
+        awayname = getIntent().getStringExtra("AWAY");
 
 
         //check that the activity is using the fragment_buttons Framelayout
@@ -109,10 +123,15 @@ public class StageTwoActivity extends AppCompatActivity
 
         //switch to buttonlist2 fragment
         ButtonList2 newFrag = new ButtonList2();
+        Bundle bundle = new Bundle();
+        bundle.putString("HOME",homename);
+        bundle.putString("AWAY",awayname);
+        newFrag.setArguments(bundle);
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment_buttons, newFrag);
         transaction.addToBackStack(null);
         transaction.commit();
+
     }
 
 

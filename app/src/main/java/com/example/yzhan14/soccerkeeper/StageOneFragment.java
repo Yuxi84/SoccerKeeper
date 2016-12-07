@@ -43,7 +43,9 @@ public class StageOneFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView =  inflater.inflate(R.layout.fragment_stage_one, container, false);
+        hometeam = (EditText) rootView.findViewById(R.id.hometeam_input);
 
+        awayteam = (EditText) rootView.findViewById(R.id.awayteam_input);
         title = (EditText)rootView.findViewById(R.id.game_title_input);
         weather = (EditText) rootView.findViewById(R.id.weather_input);
         halflength = (EditText) rootView.findViewById(R.id.half_input);
@@ -120,7 +122,7 @@ public class StageOneFragment extends Fragment {
                     referee.requestFocus();
                 }else{*/
                     Intent intent = new Intent(getActivity(), StageTwoActivity.class);
-                    //intent.putExtra("HOME",hometeam.getText().toString());
+                    intent.putExtra("HOME",hometeam.getText().toString());
                     //intent.putExtra("AWAY",hometeam.getText().toString());
                     //intent.putExtra("SIDE",sideselect.getSelectedItem().toString());
 

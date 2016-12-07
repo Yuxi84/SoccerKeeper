@@ -4,6 +4,7 @@ package com.example.yzhan14.soccerkeeper;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.annotation.StringDef;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -42,7 +43,8 @@ public class ButtonList2 extends Fragment {
     Button player9 = null;
     Button player10 = null;
     Button player11 = null;
-    ArrayList<Button> buttonslist = null;
+    ArrayList<Button> buttonslist = new ArrayList<Button>();
+    //ArrayList<Button> buttonslist = null;
     int textid = 0;
 
     public ButtonList2() {
@@ -54,11 +56,14 @@ public class ButtonList2 extends Fragment {
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
+
         return fragment;
     }
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
 
     }
 
@@ -71,6 +76,7 @@ public class ButtonList2 extends Fragment {
         final RadioGroup players = (RadioGroup) rootview.findViewById(R.id.playerradiogroup);
         final RadioGroup actions = (RadioGroup) rootview.findViewById(R.id.actionradiogroup);
 
+        String homename = getArguments().getString("HOME");
         //when user clicked the "next" button, selections have been made, back to button list 1
         //TODO: error checking to make sure selected player and action
         Button nextButton = (Button) rootview.findViewById(R.id.nextbutton);
@@ -92,7 +98,6 @@ public class ButtonList2 extends Fragment {
             }
         });
         textid = R.raw.saints_men;
-        buttonslist = new ArrayList<>();
         player1 = (Button)rootview.findViewById(R.id.player1);
         player2 = (Button)rootview.findViewById(R.id.player2);
         player3 = (Button)rootview.findViewById(R.id.player3);
@@ -104,6 +109,7 @@ public class ButtonList2 extends Fragment {
         player9 = (Button)rootview.findViewById(R.id.player9);
         player10 = (Button)rootview.findViewById(R.id.player10);
         player11 = (Button)rootview.findViewById(R.id.player11);
+
         buttonslist.add(player11);
         buttonslist.add(player10);
         buttonslist.add(player9);
@@ -115,6 +121,10 @@ public class ButtonList2 extends Fragment {
         buttonslist.add(player3);
         buttonslist.add(player2);
         buttonslist.add(player1);
+
+        if(homename.equals("Saints men")){
+            setNames(this.getContext(),textid);
+        }
 
         return rootview;
     }
@@ -135,8 +145,8 @@ public class ButtonList2 extends Fragment {
         super.onDetach();
         mListener = null;
     }
-    public void setNames(){
-        ArrayList<String> players = readRawTextFile(getContext(),textid);
+    public void setNames(Context ctx,int txtid){
+        ArrayList<String> players = readRawTextFile(ctx,txtid);
         for(Button abutton: buttonslist ){
             abutton.setText(players.remove(players.size()-1));
         }
@@ -155,7 +165,7 @@ public class ButtonList2 extends Fragment {
         InputStreamReader inputreader = new InputStreamReader(inputStream);
         BufferedReader buffreader = new BufferedReader(inputreader);
         String line;
-        ArrayList<String> playerslist = null;
+        ArrayList<String> playerslist = new ArrayList<String>();
 
         try {
             while (( line = buffreader.readLine()) != null) {
