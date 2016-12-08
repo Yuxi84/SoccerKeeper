@@ -1,10 +1,11 @@
-1,Mike Smith
-2,Kevin O'Neill
-3,Ross Suitor
-4,Stephen Dorney
-5,Rob Brandell
-6,Jethro Dede
-7,Noah Bunton
-8,Ryan Roche
-9,Christian Barral-Arteta
-10,Manny Collins
+1. Mike Smith
+2. Kevin O'Neill
+3. Ross Suitor
+4. Stephen Dorney
+5. Rob Brandell
+6. Jethro Dede
+7. Noah Bunton
+8. Ryan Roche
+9. Christian Barral-Arteta
+10. Manny Collins
+12. Tapshak Augustine

@@ -15,6 +15,12 @@
     <string name="start_game">Start Game</string>
     <string name="something_else">Something Else</string>
     <string name="weather">Weather</string>
+    <string name="shots">Shots</string>
+    <string name="shots_on_target">Shots On Target</string>
+    <string name="goals">Goals</string>
+    <string name="possession">Possession</string>
+    <string name="corners">Corners</string>
+    <string name="free_kicks">Free Kicks</string>
 
     <string-array name="teams_array">
         <item>Saints men</item>
@@ -22,6 +28,13 @@
         <item>Clarkson men</item>
         <item>Clarkson women</item>
     </string-array>
+
+
+    <string-array name="sides_array">
+        <item>Left</item>
+        <item>Right</item>
+    </string-array>
+
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -51,4 +64,5 @@
     <string name="list2_error_checking">Please select a player and an action</string>
     <string name="referee">Referee</string>
     <string name="next">next</string>
+    <string name="home_team_start_side">Home Team Start Side</string>
 </resources>
