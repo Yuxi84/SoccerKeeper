@@ -1,11 +1,16 @@
 package com.example.yzhan14.soccerkeeper;
 
+import android.Manifest;
+import android.annotation.TargetApi;
 import android.content.ContentValues;
+import android.content.pm.PackageManager;
 import android.database.sqlite.SQLiteDatabase;
 import android.content.Context;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.provider.Settings;
+import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -26,7 +31,7 @@ public class StageTwoActivity extends AppCompatActivity
         ButtonList1.OnFragmentInteractionListener,
         ButtonList2.OnFragmentInteractionListener{
 
-
+    private final static int REQUEST_CODE = 999;
 
     ArrayList<Button> buttonslist = new ArrayList<Button>();
     Button player1 = null;
@@ -53,10 +58,18 @@ public class StageTwoActivity extends AppCompatActivity
 
     private static String LOG_TAG = StageTwoActivity.class.getName();
 
+    //TODO
+    @TargetApi(Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stage_two);
+
+        //check and request for permissions to access external storage
+        if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) !=
+                PackageManager.PERMISSION_GRANTED){
+            this.requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_CODE);
+        }
         homename = getIntent().getStringExtra("HOME");
         awayname = getIntent().getStringExtra("AWAY");
 
@@ -75,6 +88,15 @@ public class StageTwoActivity extends AppCompatActivity
             //TODO: may need to pass Intent's extras
             getSupportFragmentManager().beginTransaction().add(R.id.fragment_buttons, firstFrag).commit();
         }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == REQUEST_CODE)
+            if (!(grantResults.length>0 && grantResults[0]==PackageManager.PERMISSION_GRANTED)){
+                Log.e(LOG_TAG, "permission not granted to read data base");
+            }
     }
 
     @Override
@@ -107,6 +129,11 @@ public class StageTwoActivity extends AppCompatActivity
             fieldFrag.stopChronometer();
         }
 
+    }
+
+    @Override
+    public void onExportData() {
+        new ExportDataTask(this, dbHelper.DATABASE_NAME).execute();
     }
 
     @Override

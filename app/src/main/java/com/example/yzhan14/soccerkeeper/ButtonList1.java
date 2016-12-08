@@ -1,8 +1,10 @@
 package com.example.yzhan14.soccerkeeper;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +24,8 @@ public class ButtonList1 extends Fragment {
 
     private boolean isStarted = false;
     private Switch switchBt = null;
+    private Button pauseBt = null;
+    private AlertDialog pauseDialog;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -74,6 +78,8 @@ public class ButtonList1 extends Fragment {
         //start timer button
         final Button startTimerButton = (Button) rootView.findViewById(R.id.start_timer);
         switchBt = (Switch) rootView.findViewById(R.id.switch_button);
+        pauseBt = (Button) rootView.findViewById(R.id.stop_timer);
+
 
         if (!isStarted){
             startTimerButton.setOnClickListener(new View.OnClickListener() {
@@ -91,11 +97,22 @@ public class ButtonList1 extends Fragment {
 
 
         //stop timer button (end of game)
-        Button stopTimerButton = (Button) rootView.findViewById(R.id.stop_timer);
-        stopTimerButton.setOnClickListener(new View.OnClickListener() {
+
+        pauseBt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mListener.onStartGame(false);
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder.setMessage("Do you want to export game data?");
+                builder.setCancelable(true);
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        mListener.onExportData();
+                    }
+                });
+
+                pauseDialog = builder.show();
             }
         });
         return rootView;
@@ -141,5 +158,6 @@ public class ButtonList1 extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onStartGame(boolean toStart);
+        void onExportData();
     }
 }

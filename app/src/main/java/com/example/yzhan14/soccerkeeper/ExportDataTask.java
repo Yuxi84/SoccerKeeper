@@ -10,12 +10,13 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.nio.channels.FileChannel;
+import java.security.spec.EncodedKeySpec;
 
 /**
  * Created by yzhan14 on 12/6/2016.
  */
 
-public class ExportDataTask extends AsyncTask<Void, Void, Void>{
+public class ExportDataTask extends AsyncTask<Void, Void, Boolean>{
 
     private Context ctx = null;
     private String DBName;
@@ -24,7 +25,13 @@ public class ExportDataTask extends AsyncTask<Void, Void, Void>{
         DBName = aDBName;
     }
     @Override
-    protected Void doInBackground(Void... voids) {
+    protected Boolean doInBackground(Void... voids) {
+
+        //checks the availability of external Storage
+        if (!isExternalStorageWritable()){
+            return false;
+        }
+
         //from http://www.techrepublic.com/blog/software-engineer/export-sqlite-data-from-your-android-device/
         File sd = Environment.getExternalStorageDirectory();
         File data = Environment.getDataDirectory();
@@ -33,10 +40,12 @@ public class ExportDataTask extends AsyncTask<Void, Void, Void>{
         FileChannel destination = null;
 
         //TODO: check path
-        String currentDBPath = "/data/" + "com.example.yzhan14.soccerkeeper" + "/databases/" + DBName;
+/*        String currentDBPath = "/data/" + "com.example.yzhan14.soccerkeeper" + "/databases/" + DBName;*/
         String backupDBPath = DBName;
 
-        File currentDB = new File(data, currentDBPath);
+        //TODO
+/*        File currentDB = new File(data, currentDBPath);*/
+        File currentDB = ctx.getDatabasePath(DBName);
         File backupDB = new File(sd, backupDBPath);
 
         try{
@@ -45,10 +54,26 @@ public class ExportDataTask extends AsyncTask<Void, Void, Void>{
             destination.transferFrom(source, 0, source.size());
             source.close();
             destination.close();
-            Toast.makeText(ctx, "Data for this game is exported!", Toast.LENGTH_LONG).show();
+
         } catch (java.io.IOException e) {
             e.printStackTrace();
         }
-        return null;
+        return true;
+    }
+
+    @Override
+    protected void onPostExecute(Boolean Exported) {
+        if (Exported){
+            Toast.makeText(ctx, "Data for this game is exported!", Toast.LENGTH_LONG).show();
+        }else{
+            Toast.makeText(ctx, "readable and writable external storage is unavailable", Toast.LENGTH_LONG).show();
+
+        }
+    }
+
+    public boolean isExternalStorageWritable(){
+        String state = Environment.getExternalStorageState();
+        return (Environment.MEDIA_MOUNTED.equals(state));
+
     }
 }
