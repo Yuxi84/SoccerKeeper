@@ -95,7 +95,7 @@ public class FieldFragment extends Fragment{
                     String position = coord.toString();
 
                     //get the time
-                    String time = myChronometer.getText().toString();
+                    String time = getTime();
 
                     mListener.onPositionTapped(time, position);//ask stageII acitivity to switch fragment
                     //TODO: which is the better effect
@@ -107,6 +107,10 @@ public class FieldFragment extends Fragment{
             }
         });
         return rootView;
+    }
+
+    public String getTime(){
+        return myChronometer.getText().toString();
     }
 
 

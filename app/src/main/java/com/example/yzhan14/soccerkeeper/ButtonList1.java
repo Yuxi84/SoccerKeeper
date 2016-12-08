@@ -25,6 +25,10 @@ public class ButtonList1 extends Fragment {
     private boolean isStarted = false;
     private Switch switchBt = null;
     private Button pauseBt = null;
+    private Button corner1;
+    private Button corner2;
+    private Button foul1;
+    private Button foul2;
     private AlertDialog pauseDialog;
 
     // TODO: Rename parameter arguments, choose names that match
@@ -79,6 +83,36 @@ public class ButtonList1 extends Fragment {
         final Button startTimerButton = (Button) rootView.findViewById(R.id.start_timer);
         switchBt = (Switch) rootView.findViewById(R.id.switch_button);
         pauseBt = (Button) rootView.findViewById(R.id.stop_timer);
+        corner1 = (Button) rootView.findViewById(R.id.corner1);
+        corner2 = (Button) rootView.findViewById(R.id.corner2);
+        foul1 = (Button) rootView.findViewById(R.id.foul1);
+        foul2 = (Button) rootView.findViewById(R.id.foul2);
+
+        //TODO: decoupled more?
+        corner1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mListener.onActionButtonsTapped("Team 1", "corner");
+            }
+        });
+        corner2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mListener.onActionButtonsTapped("Team 2", "corner");
+            }
+        });
+        foul1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mListener.onActionButtonsTapped("Team 1", "foul");
+            }
+        });
+        foul2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mListener.onActionButtonsTapped("Team 2", "foul");
+            }
+        });
 
 
         if (!isStarted){
@@ -159,5 +193,6 @@ public class ButtonList1 extends Fragment {
         // TODO: Update argument type and name
         void onStartGame(boolean toStart);
         void onExportData();
+        void onActionButtonsTapped(String team, String action);
     }
 }

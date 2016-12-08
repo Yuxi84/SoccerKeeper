@@ -18,13 +18,15 @@
                     android:layout_width="fill_parent"
                     android:layout_weight="1"
                     android:textSize="12sp"
-                    android:text="@string/team_1_corner"/>
+                    android:text="@string/team_1_corner"
+                    android:id="@+id/corner1"/>
                 <Button
                     android:layout_height="match_parent"
                     android:layout_width="fill_parent"
                     android:layout_weight="1"
                     android:textSize="12sp"
-                    android:text="@string/team_1_foul"/>
+                    android:text="@string/team_1_foul"
+                    android:id="@+id/foul1"/>
         </LinearLayout>
 
         <LinearLayout
@@ -36,13 +38,15 @@
                     android:layout_width="match_parent"
                     android:layout_weight="1"
                     android:textSize="12sp"
-                    android:text="@string/team_2_corner"/>
+                    android:text="@string/team_2_corner"
+                    android:id="@+id/corner2"/>
                 <Button
                     android:layout_height="match_parent"
                     android:layout_width="match_parent"
                     android:layout_weight="1"
                     android:textSize="12sp"
-                    android:text="@string/team_2_foul"/>
+                    android:text="@string/team_2_foul"
+                    android:id="@+id/foul2"/>
         </LinearLayout>
 
         <Switch

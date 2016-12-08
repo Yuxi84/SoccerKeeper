@@ -19,6 +19,8 @@ import android.view.animation.GridLayoutAnimationController;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Switch;
+import android.widget.Toast;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -137,6 +139,25 @@ public class StageTwoActivity extends AppCompatActivity
     }
 
     @Override
+    public void onActionButtonsTapped(String team, String action) {
+        //handling click events for four buttons on top of buttonlist1
+
+        //get time from fieldFragment
+        FieldFragment fieldFrag = (FieldFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_field);
+        String time = fieldFrag.getTime();
+
+        //update eventInfo entry
+        myEventInfo[0] = time;
+        myEventInfo[1] = " ";
+        myEventInfo[2] = team;
+        myEventInfo[3] = " ";
+        myEventInfo[4] = action;
+        event_count ++;
+        new insertDB().execute(myEventInfo);
+
+    }
+
+    @Override
     public void onPositionTapped(String time, String position) {
         //update eventInfo entry (0-2)
         myEventInfo[0] = time;
@@ -209,6 +230,7 @@ public class StageTwoActivity extends AppCompatActivity
         protected void onPostExecute(SQLiteDatabase db) {
             super.onPostExecute(db);
             StageTwoActivity.this.db = db;
+            Toast.makeText(StageTwoActivity.this, "data added", Toast.LENGTH_SHORT).show();
         }
     }
 
