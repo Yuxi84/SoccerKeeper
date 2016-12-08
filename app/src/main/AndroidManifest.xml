@@ -3,7 +3,7 @@
     package="com.example.yzhan14.soccerkeeper">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -21,8 +21,12 @@
         <activity android:name=".StageOneActivity" />
         <activity
             android:name=".StageTwoActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".StageThreeActivity"
+            android:screenOrientation="landscape" />
+        <activity android:name=".StageFourActivity"
             android:screenOrientation="landscape"></activity>
-        <activity android:name=".StageThreeActivity"></activity>
     </application>
 
 </manifest>
