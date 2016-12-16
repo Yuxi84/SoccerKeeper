@@ -33,6 +33,7 @@ public class StageOneFragment extends Fragment {
     EditText time = null;
     EditText location = null;
     Spinner sideselect = null;
+
     public StageOneFragment() {
         // Required empty public constructor
     }
@@ -52,7 +53,13 @@ public class StageOneFragment extends Fragment {
         time = (EditText) rootView.findViewById(R.id.time_input);
         location = (EditText) rootView.findViewById(R.id.location_input);
         sideselect = (Spinner) rootView.findViewById(R.id.side_input);
-
+        // Create an ArrayAdapter using the string array and a default spinner layout
+        ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(this.getContext(),
+                R.array.sides_array, android.R.layout.simple_spinner_item);
+        // Specify the layout to use when the list of choices appears
+        adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Apply the adapter to the spinner
+        sideselect.setAdapter(adapter1);
         //specify the adapter (Home Team/Away Team)
         AutoCompleteTextView homeTeamView = (AutoCompleteTextView) rootView.findViewById(R.id.hometeam_input);
         AutoCompleteTextView awayTeamView = (AutoCompleteTextView) rootView.findViewById(R.id.awayteam_input);
@@ -68,7 +75,7 @@ public class StageOneFragment extends Fragment {
         startGameButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-/*                String text = "";
+                String text = "";
                 Context context = getContext();
                 int duration = Toast.LENGTH_SHORT;
                 Toast toast = null;
@@ -79,56 +86,81 @@ public class StageOneFragment extends Fragment {
                     title.requestFocus();
 
                 }
-                if (hometeam.getText().toString().isEmpty()) {
-                    text = "Please enter a Home Team Name";
-                    toast = Toast.makeText(context,text,duration);
-                    toast.show();
-                    hometeam.requestFocus();
-                }
-                if (awayteam.getText().toString().isEmpty()) {
-                    text = "Please enter a Away Team Name";
-                    toast = Toast.makeText(context,text,duration);
-                    toast.show();
-                    awayteam.requestFocus();
-                }
-                if (weather.getText().toString().isEmpty()) {
-                    text = "Please enter the weather conditions";
-                    toast = Toast.makeText(context,text,duration);
-                    toast.show();
-                    weather.requestFocus();
-                }
-                if (halflength.getText().toString().isEmpty()) {
-                    text = "Please enter a length for halves";
-                    toast = Toast.makeText(context,text,duration);
-                    toast.show();
-                    halflength.requestFocus();
-                }
-                if (time.getText().toString().isEmpty()) {
-                    text = "Please enter the start time of the game";
-                    toast = Toast.makeText(context,text,duration);
-                    toast.show();
-                    time.requestFocus();
-                }
-                if (location.getText().toString().isEmpty()) {
-                    text = "Please enter the field location";
-                    toast = Toast.makeText(context,text,duration);
-                    toast.show();
-                    location.requestFocus();
-                }
-                if (sideselect.getSelectedItem()==null) {
-                    text = "Please enter the head referee";
-                    toast = Toast.makeText(context,text,duration);
-                    toast.show();
-                    referee.requestFocus();
-                }else{*/
-                    Intent intent = new Intent(getActivity(), StageTwoActivity.class);
-                    intent.putExtra("HOME",hometeam.getText().toString());
-                    //intent.putExtra("AWAY",hometeam.getText().toString());
-                    //intent.putExtra("SIDE",sideselect.getSelectedItem().toString());
+                else{
+                    if (hometeam.getText().toString().isEmpty()) {
+                        text = "Please enter a Home Team Name";
+                        toast = Toast.makeText(context,text,duration);
+                        toast.show();
+                        hometeam.requestFocus();
+                    }
 
-                    getActivity().startActivity(intent);
-                    new deleteDB().execute();
-            /*    }*/
+                    else{
+                        if (awayteam.getText().toString().isEmpty()) {
+                            text = "Please enter a Away Team Name";
+                            toast = Toast.makeText(context,text,duration);
+                            toast.show();
+                            awayteam.requestFocus();
+                        }
+                        else{
+                            if (weather.getText().toString().isEmpty()) {
+                                text = "Please enter the weather conditions";
+                                toast = Toast.makeText(context,text,duration);
+                                toast.show();
+                                weather.requestFocus();
+                            }
+                            else{
+                                if (halflength.getText().toString().isEmpty()) {
+                                    text = "Please enter a length for halves";
+                                    toast = Toast.makeText(context,text,duration);
+                                    toast.show();
+                                    halflength.requestFocus();
+                                }
+                                else{
+                                    if (time.getText().toString().isEmpty()) {
+                                        text = "Please enter the start time of the game";
+                                        toast = Toast.makeText(context,text,duration);
+                                        toast.show();
+                                        time.requestFocus();
+                                    }
+                                    else{
+                                        if (location.getText().toString().isEmpty()) {
+                                            text = "Please enter the field location";
+                                            toast = Toast.makeText(context,text,duration);
+                                            toast.show();
+                                            location.requestFocus();
+                                        }
+                                        else{
+                                            if (sideselect.getSelectedItem()==null) {
+                                                text = "Please select a start side for the home team";
+                                                toast = Toast.makeText(context,text,duration);
+                                                toast.show();
+                                                sideselect.requestFocus();
+                                            }
+                                            else{
+                                                Intent intent = new Intent(getActivity(), StageTwoActivity.class);
+                                                intent.putExtra("HOME",hometeam.getText().toString());
+                                                intent.putExtra("AWAY",awayteam.getText().toString());
+                                                intent.putExtra("TITLE",title.getText().toString());
+                                                //intent.putExtra("SIDE",sideselect.getSelectedItem().toString());
+
+                                                getActivity().startActivity(intent);
+                                                new deleteDB().execute();
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+
+
+
+
+
+
+
 
             }
         });

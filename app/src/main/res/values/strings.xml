@@ -8,7 +8,7 @@
     <string name="location">Location</string>
     <string name="half_length">Half Length</string>
 
-    <string name="aboutMsg">This app keeps statistics of a soccer game in real time and export game statistics to your device\'s storage</string>
+    <string name="aboutMsg">This app keeps statistics of a soccer game in real time and exports game statistics to your device\'s storage. \nTo use the app, first input all specified data in the next screen. Then use the next stage as follows: \nPress start when the game begins. After that, press the appropriate button whenever a team commits a foul or is awarded a corner kick. \nTo record shots, flip the switch to the appropriate team, and then click on the shot\'s location on the field. A list will replace the buttons for you to input the shot taker and the type of shot. \nWhen the half is over, press the half button. \nAny time you would like to view the current stats, simply hold down on the stat button.</string>
     <string name="about_dialog_ok">OK</string>
     <string name="home_team">Home Team</string>
     <string name="away_team">Away Team</string>
@@ -43,7 +43,7 @@
     <string name="team_2_corner">Team 2 Corner</string>
     <string name="team_2_foul">Team 2 Foul</string>
     <string name="stats">Stats</string>
-    <string name="pause">Pause</string>
+    <string name="pause">Halftime</string>
     <string name="attacking_team">Attacking Team</string>
     <string name="team_1">Team 1</string>
     <string name="team_2">Team 2</string>

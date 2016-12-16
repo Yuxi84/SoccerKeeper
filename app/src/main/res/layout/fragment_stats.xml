@@ -20,12 +20,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="@string/home_team"
+            android:id="@+id/hometeamtitle"
             android:textAlignment="center"
             android:layout_weight=".5"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="@string/away_team"
+            android:id="@+id/awteamtitle"
             android:textAlignment="center"
             android:layout_weight=".5"/>
 
@@ -68,11 +70,13 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:textAlignment="center"
+            android:id="@+id/hteamshot"
             android:layout_weight=".5"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:textAlignment="center"
+            android:id="@+id/awteamshot"
             android:layout_weight=".5"/>
 
     </LinearLayout>
@@ -86,16 +90,19 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="@string/shots_on_target"
+
             android:layout_weight=".6"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:textAlignment="center"
+            android:id="@+id/hteamshotot"
             android:layout_weight=".5"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:textAlignment="center"
+            android:id="@+id/awteamshotot"
             android:layout_weight=".5"/>
 
     </LinearLayout>
@@ -114,11 +121,13 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:textAlignment="center"
+            android:id="@+id/hteampos"
             android:layout_weight=".5"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:textAlignment="center"
+            android:id="@+id/awteampos"
             android:layout_weight=".5"/>
 
     </LinearLayout>
@@ -137,11 +146,13 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:textAlignment="center"
+            android:id="@+id/hteamcorn"
             android:layout_weight=".5"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:textAlignment="center"
+            android:id="@+id/awteamcorn"
             android:layout_weight=".5"/>
 
     </LinearLayout>
@@ -159,11 +170,13 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:textAlignment="center"
+            android:id="@+id/hteamfree"
             android:layout_weight=".5"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:textAlignment="center"
+            android:id="@+id/awteamfree"
             android:layout_weight=".5"/>
 
     </LinearLayout>

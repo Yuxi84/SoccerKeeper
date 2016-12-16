@@ -112,6 +112,12 @@ public class FieldFragment extends Fragment{
     public String getTime(){
         return myChronometer.getText().toString();
     }
+    public int getElapsedMin(){
+        //return elapsed time in second
+        long elapsedMilis = SystemClock.elapsedRealtime()-myChronometer.getBase();
+        int elapsedsecs =(int) elapsedMilis/1000;
+        return elapsedsecs;
+    }
 
 
 

@@ -6,9 +6,11 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.Switch;
 
 
@@ -29,6 +31,8 @@ public class ButtonList1 extends Fragment {
     private Button corner2;
     private Button foul1;
     private Button foul2;
+    private Button stat = null;
+    private Boolean isHalf = false;
     private AlertDialog pauseDialog;
 
     // TODO: Rename parameter arguments, choose names that match
@@ -87,45 +91,82 @@ public class ButtonList1 extends Fragment {
         corner2 = (Button) rootView.findViewById(R.id.corner2);
         foul1 = (Button) rootView.findViewById(R.id.foul1);
         foul2 = (Button) rootView.findViewById(R.id.foul2);
+        stat = (Button)rootView.findViewById(R.id.stat);
 
         //TODO: decoupled more?
         corner1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mListener.onActionButtonsTapped("Team 1", "corner");
+                ((StageTwoActivity)getActivity()).updateShots("Team 1", 3);
             }
         });
         corner2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mListener.onActionButtonsTapped("Team 2", "corner");
+                ((StageTwoActivity)getActivity()).updateShots("Team 2", 3);
             }
         });
         foul1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mListener.onActionButtonsTapped("Team 1", "foul");
+                ((StageTwoActivity)getActivity()).updateShots("Team 1", 4);
             }
         });
         foul2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mListener.onActionButtonsTapped("Team 2", "foul");
+                ((StageTwoActivity)getActivity()).updateShots("Team 2", 4);
             }
         });
 
 
-        if (!isStarted){
+        stat.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent event) {
+                switch(event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        if(isHalf){
+                            ((StageTwoActivity)getActivity()).startFour();
+                        }
+                        else{
+                            ((StageTwoActivity)getActivity()).startThree();
+                        }
+
+                        return true;
+
+                    case MotionEvent.ACTION_UP:
+                        if(isHalf){
+                            ((StageTwoActivity)getActivity()).stopFour();
+                        }
+                        else{
+                            ((StageTwoActivity)getActivity()).stopThree();
+                        }
+                        return true;
+                }
+
+                return false;
+            }
+        });
+
+
+
             startTimerButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+
                     mListener.onStartGame(true);
                     startTimerButton.setEnabled(false);
                     //disable the start button
                     isStarted = true;
                 }
             });
-        }else{
+
+            //check if timer already started in previous fragment state
+        if (isStarted) {
             startTimerButton.setEnabled(false);
         }
 
@@ -135,18 +176,43 @@ public class ButtonList1 extends Fragment {
         pauseBt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mListener.onStartGame(false);
-                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                builder.setMessage("Do you want to export game data?");
-                builder.setCancelable(true);
-                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        mListener.onExportData();
-                    }
-                });
+                if (isHalf) {
+                    mListener.onStartGame(false);
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                    builder.setMessage("Do you want to export game data?");
+                    builder.setCancelable(true);
+                    builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            mListener.onExportData();
+                        }
+                    });
 
-                pauseDialog = builder.show();
+                    pauseDialog = builder.show();
+                }
+                else{
+                    //this is where we need to reset clock and switch info
+                    mListener.onStartGame(false);
+                    startTimerButton.setEnabled(true);
+                    isHalf = !isHalf;
+                    ((StageTwoActivity)getActivity()).updateHalf();
+                    ((StageTwoActivity)getActivity()).clearNums();
+
+                }
+            }
+        });
+
+        //setListerner to switch button to keep track of possession
+        switchBt.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (switchBt.isChecked()){
+                    //switched to Team 2(away), need to add elapsed time to team1
+                    mListener.onAddPossession(1);
+                }else{
+                    //switched to Team 1 (home), need to add to team2
+                    mListener.onAddPossession(2);
+                }
             }
         });
         return rootView;
@@ -194,5 +260,6 @@ public class ButtonList1 extends Fragment {
         void onStartGame(boolean toStart);
         void onExportData();
         void onActionButtonsTapped(String team, String action);
+        void onAddPossession(int team);
     }
 }

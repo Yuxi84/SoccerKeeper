@@ -63,7 +63,8 @@
             />
         <Button
             style="@style/Button"
-            android:text="@string/stats"/>
+            android:text="@string/stats"
+            android:id="@+id/stat"/>
         <Button
             android:id="@+id/stop_timer"
             style="@style/Button"

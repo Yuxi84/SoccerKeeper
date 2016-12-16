@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/fragment_field"
+    android:clickable="false"
     tools:context="com.example.yzhan14.soccerkeeper.FieldFragment">
 
 

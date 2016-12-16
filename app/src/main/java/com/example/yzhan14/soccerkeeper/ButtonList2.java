@@ -76,7 +76,8 @@ public class ButtonList2 extends Fragment {
         final RadioGroup players = (RadioGroup) rootview.findViewById(R.id.playerradiogroup);
         final RadioGroup actions = (RadioGroup) rootview.findViewById(R.id.actionradiogroup);
 
-        String homename = getArguments().getString("HOME");
+        Boolean teamver = getArguments().getBoolean("SETNAMES");
+        final String ateam = getArguments().getString("ATEAM");
         //when user clicked the "next" button, selections have been made, back to button list 1
         //TODO: error checking to make sure selected player and action
         Button nextButton = (Button) rootview.findViewById(R.id.nextbutton);
@@ -89,6 +90,12 @@ public class ButtonList2 extends Fragment {
                 if ((selectedPlayerId != -1) && (selectedActionId != -1)) {
                     String selectedPlayer = ((RadioButton) rootview.findViewById(selectedPlayerId)).getText().toString();
                     String selectedAction = ((RadioButton) rootview.findViewById(selectedActionId)).getText().toString();
+                    if(selectedAction.equals("Shot")){
+                        ((StageTwoActivity)getActivity()).updateShots(ateam, 1);
+                    }
+                    else{
+                        ((StageTwoActivity)getActivity()).updateShots(ateam, 2);
+                    }
                     mListener.onSelected(selectedPlayer, selectedAction);
                     mListener.backPress();
                 }else{
@@ -122,8 +129,11 @@ public class ButtonList2 extends Fragment {
         buttonslist.add(player2);
         buttonslist.add(player1);
 
-        if(homename.equals("Saints men")){
+        if(teamver){
             setNames(this.getContext(),textid);
+        }
+        else{
+            setNames(this.getContext(),0);
         }
 
         return rootview;
@@ -146,9 +156,19 @@ public class ButtonList2 extends Fragment {
         mListener = null;
     }
     public void setNames(Context ctx,int txtid){
-        ArrayList<String> players = readRawTextFile(ctx,txtid);
-        for(Button abutton: buttonslist ){
-            abutton.setText(players.remove(players.size()-1));
+        int index = 11;
+        if(txtid==0){
+            for(Button abutton: buttonslist ){
+                abutton.setText("Player "+Integer.toString(index));
+                index --;
+            }
+        }
+        else{
+
+            ArrayList<String> players = readRawTextFile(ctx,txtid);
+            for(Button abutton: buttonslist ){
+                abutton.setText(players.remove(players.size()-1));
+            }
         }
     }
 
